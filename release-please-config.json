@@ -1,0 +1,14 @@
+{
+  "packages": {
+    ".": {
+      "release-type": "simple",
+      "component": "RonsFault",
+      "extra-files": [
+        {
+          "type": "generic",
+          "path": "RonsFault.toc"
+        }
+      ]
+    }
+  }
+}
