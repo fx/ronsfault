@@ -26,6 +26,14 @@ Single-file addon (`RonsFault.lua`), no build step. The TOC file (`RonsFault.toc
 
 WoW cannot load `.png` files. Textures must be `.tga` (32-bit RGBA) or `.blp`. The Lua references paths without extension (`Interface\AddOns\RonsFault\ron-warrior`) so WoW resolves the format automatically. Convert with: `magick input.png output.tga`
 
+## Commits
+
+This project uses [conventional commits](https://www.conventionalcommits.org/) to drive release-please. Prefix every commit message:
+- `feat:` — new feature (minor version bump)
+- `fix:` — bug fix (patch bump)
+- `feat!:` or `BREAKING CHANGE:` — breaking change (major bump)
+- `chore:`, `docs:`, `ci:` — no release triggered
+
 ## Testing in-game
 
 - `/rf test` — shows the death dialog + addon without dying
