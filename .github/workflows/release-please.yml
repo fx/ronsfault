@@ -35,7 +35,16 @@ jobs:
       - name: Build addon zip
         run: |
           mkdir -p staging/RonsFault
-          cp RonsFault.toc RonsFault.lua ron-warrior.tga ron-warrior.png icon.jpg staging/RonsFault/
+          # Always include the .toc itself
+          cp RonsFault.toc staging/RonsFault/
+          # Code files listed in the .toc (non-comment, non-metadata lines)
+          grep -v '^#' RonsFault.toc | grep -v '^\s*$' | while read -r f; do
+            cp "$f" staging/RonsFault/
+          done
+          # Assets from ## X-Assets metadata
+          grep '^## X-Assets:' RonsFault.toc | sed 's/^## X-Assets://' | tr ',' '\n' | tr -d ' ' | while read -r f; do
+            [ -n "$f" ] && cp "$f" staging/RonsFault/
+          done
           cd staging
           zip -r "../RonsFault-${VERSION}.zip" RonsFault/
 
